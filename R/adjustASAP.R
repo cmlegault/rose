@@ -7,14 +7,14 @@
 #' or to focus on specific ages (values of 1, with other ages less than one and greater than or 
 #' equal to 0).
 #'
-#' @param asap.dat list of asap data created by ReadASAP3DatFile 
+#' @param asap.dat list of asap data created by ASAPplots::ReadASAP3DatFile 
 #' @param ramp integer nubmer of years with intermediate values between original and full multipler 
 #' @param change.year integer first year of full multiplier, all subsequent years have full multiplier
 #' @param cmult double the multiplier to be applied to total catch of all fleets for years > year
 #' @param mmult double the multiplier to be applied to M for years > year
 #' @param mselx vector of length equal to number of ages, modified mmult at age
 #'
-#' @return list of asap data that can be written out using WriteASAP3DatFile
+#' @return list of asap data that can be written out using ASAPplots::WriteASAP3DatFile
 #' @export
 #'
 #' @examples

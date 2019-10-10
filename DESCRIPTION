@@ -14,3 +14,7 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 2.1.0)
+Imports: 
+    ASAPplots (>= 0.2.14)
+Remotes:  
+    cmlegault/ASAPplots

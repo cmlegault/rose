@@ -7,7 +7,7 @@
 adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
 }
 \arguments{
-\item{asap.dat}{list of asap data created by ReadASAP3DatFile}
+\item{asap.dat}{list of asap data created by ASAPplots::ReadASAP3DatFile}
 
 \item{ramp}{integer nubmer of years with intermediate values between original and full multipler}
 
@@ -20,7 +20,7 @@ adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
 \item{mselx}{vector of length equal to number of ages, modified mmult at age}
 }
 \value{
-list of asap data that can be written out using WriteASAP3DatFile
+list of asap data that can be written out using ASAPplots::WriteASAP3DatFile
 }
 \description{
 Modifies an exisiting ASAP input data by applying catch and M multipliers after specified year. 

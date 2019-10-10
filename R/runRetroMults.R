@@ -35,7 +35,7 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
   n.cmults <- length(cmult.vals)
   n.mmults <- length(mmult.vals)
   
-  asap.dat <- read.asap3.dat.file(asap.fname)
+  asap.dat <- ASAPplots::ReadASAP3DatFile(asap.fname)
   terminal.year <- as.numeric(asap.dat$dat[1]) + as.numeric(asap.dat$dat[2]) - 1
   retro.first.year <- terminal.year - n.peels
   
@@ -50,7 +50,7 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
         asap.dat.adj <- adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
         fname <- paste0("y", change.year, "c", cmult, "m", mmult, ".dat")
         header.text <- paste0("year=", change.year, ", catch mult=", cmult, ", m mult=", mmult)
-        write.asap3.dat.file(fname, asap.dat.adj, header.text)
+        ASAPplots::WriteASAP3DatFile(fname, asap.dat.adj, header.text)
         
         shell(paste("ASAPRETRO.exe", fname, retro.first.year), intern=TRUE)
         ssbrho <- calcSSBrho(fname, n.peels)
