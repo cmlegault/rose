@@ -41,13 +41,13 @@ adjustASAP <- function(asap.dat, ramp, change.year, cmult, mmult, mselx){
   for (ifleet in 1:nfleets){
     catch.mat.adj <- catch.mat[[1]][[ifleet]]
     nc <- length(catch.mat.adj[1,])
-    catch.mat.adj[, nc] <- catch.mat.adj[, nc] * (1 + tsmult * cmult)
+    catch.mat.adj[, nc] <- catch.mat.adj[, nc] * (1 + tsmult * (cmult-1))
     asap.dat.adj$dat[names(asap.dat$dat) == "CAA_mats"][[1]][[ifleet]] <- catch.mat.adj
   }
   # adjust natural mortality
   m.mat <- asap.dat$dat[names(asap.dat$dat) == "M"]
   m.mat.adj <- m.mat[[1]]
-  mmult.mat <- 1 + (outer(tsmult, mselx) * mmult)
+  mmult.mat <- 1 + (outer(tsmult, mselx) * (mmult-1))
   m.mat.adj <- m.mat.adj * mmult.mat
   asap.dat.adj$dat[names(asap.dat$dat) == "M"][[1]] <- m.mat.adj
   
