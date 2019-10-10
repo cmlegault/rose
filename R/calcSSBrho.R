@@ -1,7 +1,7 @@
-#' Calculates Mohn's rho for spawning stock biomass from ASAP retrospective
+#' Calculates Mohn's rho for SSB from ASAP retrospective
 #'
-#' Computes relative change in SSB from tip of previous n.peels relative to terminal estimates
-#' for that year. Returns the average value.
+#' Computes relative change in spawning stock biomass from tip of previous n.peels 
+#' relative to terminal estimates for that year. Returns the average value.
 #'
 #' @param fname character path and name of ASAP input file (including .dat extension)
 #' @param n.peels integer number of peels used in calculating mean Mohn's rho value (must be <10)

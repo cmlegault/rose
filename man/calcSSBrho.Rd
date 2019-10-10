@@ -2,7 +2,7 @@
 % Please edit documentation in R/calcSSBrho.R
 \name{calcSSBrho}
 \alias{calcSSBrho}
-\title{Calculates Mohn's rho for spawning stock biomass from ASAP retrospective}
+\title{Calculates Mohn's rho for SSB from ASAP retrospective}
 \usage{
 calcSSBrho(fname, n.peels)
 }
@@ -15,6 +15,6 @@ calcSSBrho(fname, n.peels)
 double mean Mohn's rho for SSB
 }
 \description{
-Computes relative change in SSB from tip of previous n.peels relative to terminal estimates
-for that year. Returns the average value.
+Computes relative change in spawning stock biomass from tip of previous n.peels 
+relative to terminal estimates for that year. Returns the average value.
 }
