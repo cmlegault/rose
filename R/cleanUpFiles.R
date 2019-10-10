@@ -14,6 +14,8 @@
 cleanUpFiles <- function(fname){
   n.char <- nchar(fname)
   fname.base <- substr(fname, 1, n.char-4)
+  shell(paste0("del ", fname.base, ".dat"))
+  shell(paste0("del ", fname.base, ".rts"))
   shell(paste0("del ",fname.base,"_00*.*"))
   shell("del admodel.*")
   shell("del admb2r.log")
