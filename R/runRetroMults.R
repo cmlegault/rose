@@ -62,7 +62,7 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
                              mselxlab = mselxlab,
                              ssbrho = ssbrho)
         res <- rbind(res, thisdf)
-        if (save.files == FALSE) clean_up_files(fname)
+        if (save.files == FALSE) cleanUpFiles(fname)
       }
     }
   }
