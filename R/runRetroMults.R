@@ -16,7 +16,7 @@
 #' @param mselxlab character describes natural mortality selectivity used
 #' @param save.files logical TRUE means keep all retrospective files, default FALSE removes all files
 #'
-#' @return
+#' @return data frame of scenario, change year, ramp, catch multiplier, M multiplier, M selectivity label, and Mohn's rho for SSB
 #' @export
 #'
 #' @examples

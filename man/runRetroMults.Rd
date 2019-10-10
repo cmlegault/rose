@@ -28,6 +28,9 @@ runRetroMults(scenario.name, asap.fname, n.peels, ramp, year.vals,
 
 \item{save.files}{logical TRUE means keep all retrospective files, default FALSE removes all files}
 }
+\value{
+data frame of scenario, change year, ramp, catch multiplier, M multiplier, M selectivity label, and Mohn's rho for SSB
+}
 \description{
 Scenarios defined by ramp (number of years included in ramp of multipliers), change year, 
 catch multipliers, natural mortality multipliers, natural mortality selectivty 
