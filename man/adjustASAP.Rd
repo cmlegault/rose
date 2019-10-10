@@ -30,6 +30,3 @@ The M selectivity allows for change in M to happen equally across all ages (all 
 or to focus on specific ages (values of 1, with other ages less than one and greater than or 
 equal to 0).
 }
-\examples{
-adjustASAP(asap.dat, 9, 2005, 1, 2.5, seq(0.1, 1, 0.1))
-}

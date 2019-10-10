@@ -19,8 +19,8 @@
 #' @return data frame of scenario, change year, ramp, catch multiplier, M multiplier, M selectivity label, and Mohn's rho for SSB
 #' @export
 #'
-#' @examples
-#' runRetroMults("Sudden Catch Mults", "simple.dat", 5, 0, c(2000,2005), seq(1.5,5,0.5), 1, rep(1,6), "All Ages", FALSE)
+# @examples
+# runRetroMults("Sudden Catch Mults", "simple.dat", 5, 0, c(2000,2005), seq(1.5,5,0.5), 1, rep(1,6), "All Ages", FALSE)
 
 runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.vals,mmult.vals,mselx, mselxlab,save.files=FALSE){
   res <- data.frame(scenario = character(),

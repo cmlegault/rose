@@ -8,8 +8,8 @@
 #' @return 
 #' @export
 #'
-#' @examples
-#' cleanUpFiles("simple.dat")
+# @examples
+# cleanUpFiles("simple.dat")
 
 cleanUpFiles <- function(fname){
   n.char <- nchar(fname)

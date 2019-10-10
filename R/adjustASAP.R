@@ -17,8 +17,8 @@
 #' @return list of asap data that can be written out using ASAPplots::WriteASAP3DatFile
 #' @export
 #'
-#' @examples
-#' adjustASAP(asap.dat, 9, 2005, 1, 2.5, seq(0.1, 1, 0.1))
+# @examples
+# adjustASAP(asap.dat, 9, 2005, 1, 2.5, seq(0.1, 1, 0.1))
 
 adjustASAP <- function(asap.dat, ramp, change.year, cmult, mmult, mselx){
   asap.dat.adj <- asap.dat

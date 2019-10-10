@@ -37,6 +37,3 @@ catch multipliers, natural mortality multipliers, natural mortality selectivty
 (maximum value should be 1, minimum value allowed is zero). Uses Mohn's rho for 
 spawning stock biomass as the metric of removing retrospective pattern (when ssbrho = 0).
 }
-\examples{
-runRetroMults("Sudden Catch Mults", "simple.dat", 5, 0, c(2000,2005), seq(1.5,5,0.5), 1, rep(1,6), "All Ages", FALSE)
-}

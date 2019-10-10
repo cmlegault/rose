@@ -13,6 +13,3 @@ cleanUpFiles(fname)
 Deletes files in current directory associated with runRetroMults analyses. Removes both 
 named files as well as default files created when ASAP runs.
 }
-\examples{
-cleanUpFiles("simple.dat")
-}
