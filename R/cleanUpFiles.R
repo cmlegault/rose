@@ -5,7 +5,7 @@
 #'
 #' @param fname character base file name used in runRetroMults
 #'
-#' @return 
+#' @return NULL
 #' @export
 #'
 # @examples
