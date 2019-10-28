@@ -2,5 +2,6 @@
 
 export(adjustASAP)
 export(calcSSBrho)
+export(calc_ssb_per_r)
 export(cleanUpFiles)
 export(runRetroMults)
