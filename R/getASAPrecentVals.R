@@ -12,6 +12,7 @@ get_asap_recent_vals <- function(asap, nrecentyears){
   ny <- asap$parms$nyears
   nr <- ny-nrecentyears+1
   res$ssbwaa <- apply(asap$WAA.mats$WAA.ssb[nr:ny, ], 2, mean)
+  res$cwaa <- apply(asap$WAA.mats$WAA.catch.all[nr:ny, ], 2, mean)
   res$maturity <- apply(asap$maturity[nr:ny, ], 2, mean)
   res$maa <- apply(asap$M.age[nr:ny, ], 2, mean)
   sel.mat <- asap$F.age[nr:ny, ] / apply(asap$F.age[nr:ny, ], 1, max)
