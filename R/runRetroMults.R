@@ -50,7 +50,7 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
       for (im in 1:n.mmults){
         mmult <- mmult.vals[im]
         for (ii in 1:n.imults){
-          imult <- imult.vals[im]
+          imult <- imult.vals[ii]
         
           asap.dat.adj <- adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult)
           fname <- paste0("y", change.year, "r", ramp, "c", cmult, "m", mmult, "s", paste0(mselx, collapse = ""), "i", imult, ".dat")
