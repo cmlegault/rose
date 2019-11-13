@@ -13,7 +13,7 @@
 #' @param cmult double the multiplier to be applied to total catch of all fleets for years > year
 #' @param mmult double the multiplier to be applied to M for years > year
 #' @param mselx vector of length equal to number of ages, modified mmult at age
-#' @param imult double the multiplier to be applied to indices for years > year (default = 1)
+#' @param imult double the multiplier to be applied to indices for years > year 
 #'
 #' @return list of asap data that can be written out using ASAPplots::WriteASAP3DatFile
 #' @export
@@ -21,7 +21,7 @@
 # @examples
 # adjustASAP(asap.dat, 9, 2005, 1, 2.5, 1, seq(0.1, 1, 0.1))
 
-adjustASAP <- function(asap.dat, ramp, change.year, cmult, mmult, mselx, imult=1){
+adjustASAP <- function(asap.dat, ramp, change.year, cmult, mmult, mselx, imult){
   asap.dat.adj <- asap.dat
   year1 <- as.numeric(asap.dat$dat[names(asap.dat$dat) == "year1"])
   nyears <- as.numeric(asap.dat$dat[names(asap.dat$dat) == "n_years"])

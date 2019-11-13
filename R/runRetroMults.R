@@ -1,9 +1,10 @@
-#' Wrapper to run ASAP retrospective across range of multipliers for catch or M
+#' Wrapper to run ASAP retrospective across range of multipliers for catch, M, or indices
 #' 
 #' Scenarios defined by ramp (number of years included in ramp of multipliers), change year, 
 #' catch multipliers, natural mortality multipliers, natural mortality selectivty 
-#' (maximum value should be 1, minimum value allowed is zero). Uses Mohn's rho for 
-#' spawning stock biomass as the metric of removing retrospective pattern (when ssbrho = 0).
+#' (maximum value should be 1, minimum value allowed is zero), and index multipliers. 
+#' Uses Mohn's rho for spawning stock biomass as the metric of removing 
+#' retrospective pattern (when ssbrho = 0).
 #'
 #' @param scenario.name character describes the runs in words to distinguish from other sets of runs
 #' @param asap.fname character name of asap dat file (including extension)
@@ -14,15 +15,16 @@
 #' @param mmult.vals vector of natural mortality (M) multipliers
 #' @param mselx vector of selectivity at age to mutiply mmult by (allows additional mortality to be for all ages equally, focused on young ages, focused on old ages, etc.)
 #' @param mselxlab character describes natural mortality selectivity used
+#' @param imult.vals vector of index multipliers 
 #' @param save.files logical TRUE means keep all retrospective files, default FALSE removes all files
 #'
 #' @return data frame of scenario, change year, ramp, catch multiplier, M multiplier, M selectivity label, and Mohn's rho for SSB
 #' @export
 #'
 # @examples
-# runRetroMults("Sudden Catch Mults", "simple.dat", 5, 0, c(2000,2005), seq(1.5,5,0.5), 1, rep(1,6), "All Ages", FALSE)
+# runRetroMults("Sudden Catch Mults", "simple.dat", 5, 0, c(2000,2005), seq(1.5,5,0.5), 1, rep(1,6), "All Ages", 1, FALSE)
 
-runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.vals,mmult.vals,mselx, mselxlab,save.files=FALSE){
+runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.vals,mmult.vals,mselx, mselxlab,imult.vals,save.files=FALSE){
   res <- data.frame(scenario = character(),
                     change.year = integer(),
                     ramp = integer(),
@@ -34,6 +36,7 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
   n.years <- length(year.vals)
   n.cmults <- length(cmult.vals)
   n.mmults <- length(mmult.vals)
+  n.imults <- length(imult.vals)
   
   asap.dat <- ASAPplots::ReadASAP3DatFile(asap.fname)
   terminal.year <- as.numeric(asap.dat$dat[1]) + as.numeric(asap.dat$dat[2]) - 1
@@ -46,24 +49,28 @@ runRetroMults <- function(scenario.name,asap.fname,n.peels,ramp,year.vals,cmult.
       cmult <- cmult.vals[ic]
       for (im in 1:n.mmults){
         mmult <- mmult.vals[im]
+        for (ii in 1:n.imults){
+          imult <- imult.vals[im]
         
-        asap.dat.adj <- adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
-        fname <- paste0("y", change.year, "r", ramp, "c", cmult, "m", mmult, "s", paste0(mselx, collapse = ""), ".dat")
-        header.text <- paste0("year=", change.year, " ramp=", ramp, ", catch mult=", cmult, ", m mult=", mmult, " mselx=", paste0(mselx, collapse = ""))
-        print(header.text)
-        ASAPplots::WriteASAP3DatFile(fname, asap.dat.adj, header.text)
-        
-        shell(paste("ASAPRETRO.exe", fname, retro.first.year), intern=TRUE)
-        ssbrho <- calcSSBrho(fname, n.peels)
-        thisdf <- data.frame(scenario = scenario.name,
-                             change.year = change.year,
-                             ramp = ramp,
-                             cmult = cmult,
-                             mmult = mmult,
-                             mselxlab = mselxlab,
-                             ssbrho = ssbrho)
-        res <- rbind(res, thisdf)
-        if (save.files == FALSE) cleanUpFiles(fname)
+          asap.dat.adj <- adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult)
+          fname <- paste0("y", change.year, "r", ramp, "c", cmult, "m", mmult, "s", paste0(mselx, collapse = ""), "i", imult, ".dat")
+          header.text <- paste0("year=", change.year, " ramp=", ramp, ", catch mult=", cmult, ", m mult=", mmult, " mselx=", paste0(mselx, collapse = ""), " index mult=", imult)
+          print(header.text)
+          ASAPplots::WriteASAP3DatFile(fname, asap.dat.adj, header.text)
+          
+          shell(paste("ASAPRETRO.exe", fname, retro.first.year), intern=TRUE)
+          ssbrho <- calcSSBrho(fname, n.peels)
+          thisdf <- data.frame(scenario = scenario.name,
+                               change.year = change.year,
+                               ramp = ramp,
+                               cmult = cmult,
+                               mmult = mmult,
+                               mselxlab = mselxlab,
+                               imult = imult,
+                               ssbrho = ssbrho)
+          res <- rbind(res, thisdf)
+          if (save.files == FALSE) cleanUpFiles(fname)
+        }
       }
     }
   }

@@ -4,7 +4,7 @@
 \alias{adjustASAP}
 \title{Adjust ASAP input file by catch or M multiplier using ramp and M selectivity}
 \usage{
-adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult = 1)
+adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult)
 }
 \arguments{
 \item{asap.dat}{list of asap data created by ASAPplots::ReadASAP3DatFile}
@@ -19,7 +19,7 @@ adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult = 1)
 
 \item{mselx}{vector of length equal to number of ages, modified mmult at age}
 
-\item{imult}{double the multiplier to be applied to indices for years > year (default = 1)}
+\item{imult}{double the multiplier to be applied to indices for years > year}
 }
 \value{
 list of asap data that can be written out using ASAPplots::WriteASAP3DatFile

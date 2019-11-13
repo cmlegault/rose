@@ -2,10 +2,11 @@
 % Please edit documentation in R/runRetroMults.R
 \name{runRetroMults}
 \alias{runRetroMults}
-\title{Wrapper to run ASAP retrospective across range of multipliers for catch or M}
+\title{Wrapper to run ASAP retrospective across range of multipliers for catch, M, or indices}
 \usage{
 runRetroMults(scenario.name, asap.fname, n.peels, ramp, year.vals,
-  cmult.vals, mmult.vals, mselx, mselxlab, save.files = FALSE)
+  cmult.vals, mmult.vals, mselx, mselxlab, imult.vals,
+  save.files = FALSE)
 }
 \arguments{
 \item{scenario.name}{character describes the runs in words to distinguish from other sets of runs}
@@ -26,6 +27,8 @@ runRetroMults(scenario.name, asap.fname, n.peels, ramp, year.vals,
 
 \item{mselxlab}{character describes natural mortality selectivity used}
 
+\item{imult.vals}{vector of index multipliers}
+
 \item{save.files}{logical TRUE means keep all retrospective files, default FALSE removes all files}
 }
 \value{
@@ -34,6 +37,7 @@ data frame of scenario, change year, ramp, catch multiplier, M multiplier, M sel
 \description{
 Scenarios defined by ramp (number of years included in ramp of multipliers), change year, 
 catch multipliers, natural mortality multipliers, natural mortality selectivty 
-(maximum value should be 1, minimum value allowed is zero). Uses Mohn's rho for 
-spawning stock biomass as the metric of removing retrospective pattern (when ssbrho = 0).
+(maximum value should be 1, minimum value allowed is zero), and index multipliers. 
+Uses Mohn's rho for spawning stock biomass as the metric of removing 
+retrospective pattern (when ssbrho = 0).
 }
