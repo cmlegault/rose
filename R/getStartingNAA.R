@@ -16,7 +16,7 @@ get_starting_naa <- function(asap, recruityears){
   yearR <- yearindex[years %in% recruityears]
   
   naa <- rep(NA, nAge)
-  naa[1] <- median(asap$N.age[yearR, 1])
+  naa[1] <- stats::median(asap$N.age[yearR, 1])
 
   zaa <- asap$M.age[ny, ] + asap$F.age[ny, ]
   naa[2:nAge] <- asap$N.age[ny, 1:(nAge-1)] * exp(-zaa[1:(nAge-1)])
