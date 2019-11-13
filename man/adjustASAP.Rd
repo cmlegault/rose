@@ -4,7 +4,7 @@
 \alias{adjustASAP}
 \title{Adjust ASAP input file by catch or M multiplier using ramp and M selectivity}
 \usage{
-adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
+adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx, imult = 1)
 }
 \arguments{
 \item{asap.dat}{list of asap data created by ASAPplots::ReadASAP3DatFile}
@@ -18,14 +18,16 @@ adjustASAP(asap.dat, ramp, change.year, cmult, mmult, mselx)
 \item{mmult}{double the multiplier to be applied to M for years > year}
 
 \item{mselx}{vector of length equal to number of ages, modified mmult at age}
+
+\item{imult}{double the multiplier to be applied to indices for years > year (default = 1)}
 }
 \value{
 list of asap data that can be written out using ASAPplots::WriteASAP3DatFile
 }
 \description{
-Modifies an exisiting ASAP input data by applying catch and M multipliers after specified year. 
+Modifies an exisiting ASAP input data by applying catch, M, and index multipliers after specified year. 
 The ramp variable allows for sudden change to multipled values or a linear increase with 
-ramp number of years having intermediate value between original and full catch or M multiplier. 
+ramp number of years having intermediate value between original and full multiplier. 
 The M selectivity allows for change in M to happen equally across all ages (all values = 1), 
 or to focus on specific ages (values of 1, with other ages less than one and greater than or 
 equal to 0).
